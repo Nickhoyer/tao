@@ -1429,9 +1429,13 @@ impl UnownedWindow {
       if visible {
         collection_behavior |=
           NSWindowCollectionBehavior::NSWindowCollectionBehaviorCanJoinAllSpaces;
+        collection_behavior |=
+          NSWindowCollectionBehavior::NSWindowCollectionBehaviorFullScreenAuxiliary
       } else {
         collection_behavior &=
           !NSWindowCollectionBehavior::NSWindowCollectionBehaviorCanJoinAllSpaces;
+        collection_behavior &=
+          !NSWindowCollectionBehavior::NSWindowCollectionBehaviorFullScreenAuxiliary;
       };
       self.ns_window.setCollectionBehavior_(collection_behavior)
     }
