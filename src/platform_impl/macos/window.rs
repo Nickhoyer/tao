@@ -1434,9 +1434,7 @@ impl UnownedWindow {
         collection_behavior |=
           NSWindowCollectionBehavior::NSWindowCollectionBehaviorFullScreenAuxiliary;
         self.ns_window.setCanHide_(false);
-        self.ns_window.setActivationPolicy_(
-          NSApplicationActivationPolicy::NSApplicationActivationPolicyAccessory,
-        );
+        let _: () = msg_send![*self.ns_window, setActivationPolicy: 1];
       } else {
         collection_behavior &=
           !NSWindowCollectionBehavior::NSWindowCollectionBehaviorCanJoinAllSpaces;
