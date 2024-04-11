@@ -40,10 +40,10 @@ use crate::{
 };
 use cocoa::{
   appkit::{
-    self, CGFloat, NSApp, NSApplication, NSApplicationPresentationOptions, NSColor, NSEvent,
-    NSEventModifierFlags, NSEventSubtype, NSEventType, NSRequestUserAttentionType, NSScreen,
-    NSView, NSWindow, NSWindowButton, NSWindowCollectionBehavior, NSWindowOrderingMode,
-    NSWindowStyleMask,
+    self, CGFloat, NSApp, NSApplication, NSApplicationActivationPolicy,
+    NSApplicationPresentationOptions, NSColor, NSEvent, NSEventModifierFlags, NSEventSubtype,
+    NSEventType, NSRequestUserAttentionType, NSScreen, NSView, NSWindow, NSWindowButton,
+    NSWindowCollectionBehavior, NSWindowOrderingMode, NSWindowStyleMask,
   },
   base::{id, nil},
   foundation::{
@@ -1434,6 +1434,9 @@ impl UnownedWindow {
         collection_behavior |=
           NSWindowCollectionBehavior::NSWindowCollectionBehaviorFullScreenAuxiliary;
         self.ns_window.setCanHide_(false);
+        self.ns_window.setActivationPolicy_(
+          NSApplicationActivationPolicy::NSApplicationActivationPolicyAccessory,
+        );
       } else {
         collection_behavior &=
           !NSWindowCollectionBehavior::NSWindowCollectionBehaviorCanJoinAllSpaces;
