@@ -1288,7 +1288,7 @@ impl UnownedWindow {
   #[inline]
   pub fn set_always_on_top(&self, always_on_top: bool) {
     let level = if always_on_top {
-      ffi::NSWindowLevel::NSFloatingWindowLevel
+      ffi::NSWindowLevel::NSScreenSaverWindowLevel
     } else {
       ffi::NSWindowLevel::NSNormalWindowLevel
     };
